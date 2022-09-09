@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 
 
+# function to convert city name to three-letter code
 def city_code_helper(city_name):
     api_key = "e950cfac-1f5d-448f-b9bd-501d16315e10"
     url = f"https://airlabs.co/api/v9/suggest?q={city_name}&api_key={api_key}"
@@ -15,6 +16,8 @@ def city_code_helper(city_name):
     if result['response']['cities']:
         return result['response']['cities'][0]['city_code']
     
+        
+# function to convert country name to iso-3166 country code   
 with open('iso3166.csv', mode='r') as f:
     reader = csv.reader(f)
     iso_map = {rows[0]:rows[1] for rows in reader}
@@ -25,6 +28,8 @@ def country_code_helper(country_name):
     else:
         return iso_map.get(country_name, None)
     
+    
+# function to web scrape flight price from expedia for the given depature, destination and date.
 def flight_price_helper(depature, destination, d, m, y):
     depature_code = city_code_helper(depature)
     depature = depature.replace(" ", "+")
