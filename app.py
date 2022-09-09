@@ -3,6 +3,7 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 
 from resources.weather import WeatherService
+from resources.video import VideoService
 from resources.user import User, UserLogin, UserRegister
 from resources.wishlist import Wishlist, Wishlists
 from resources.journey import Journey, JourneyList
@@ -38,7 +39,9 @@ def add_claims_to_jwt(identity):
     return {'is_admin': False}
     
 # add routes for endpoints
-api.add_resource(WeatherService, '/weather/<country>/<city>/<date>')
+api.add_resource(WeatherService, '/explore/weather/<country>/<city>/<date>')
+api.add_resource(VideoService, '/explore/video/<string:city>')
+
 api.add_resource(User, '/user/<int:user_id>')
 api.add_resource(UserLogin, '/login')
 api.add_resource(UserRegister, '/register')
