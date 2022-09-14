@@ -1,4 +1,3 @@
-from os import access
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import create_access_token
 
