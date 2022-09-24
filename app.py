@@ -18,7 +18,7 @@ app.secret_key = 'koopa'
 api = Api(app)
 
 # set up postgresql database
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://flask:password@localhost/travel_guide"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:zsTTCKMMyM5e2aoa1cOm@containers-us-west-62.railway.app:5622/railway"
 
 # ensure the database is created before first request
 @app.before_first_request
